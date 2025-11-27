@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 type RootStackParamList = {
   Form: undefined;
   Linktree: {
+    recado: string;
     nome: string;
     photo: string;
     whatsapp: string;
@@ -29,6 +30,7 @@ export default function FormScreen() {
   const [github, setGithub] = useState('');
   const [portfolio, setPortfolio] = useState('');
   const [nome, setNome] = useState('');
+  const [recado, setRecado] = useState('');
 
 
   const handlePress = () => {
@@ -40,6 +42,7 @@ export default function FormScreen() {
       linkedin,
       github,
       portfolio,
+      recado,
     });
   };
 
@@ -65,6 +68,15 @@ export default function FormScreen() {
           value={nome}
           onChangeText={setNome}
         />
+
+        <TextInput
+          placeholder="Biografia"
+          placeholderTextColor="#ccc"
+          style={styles.input}
+          value={recado}
+          onChangeText={setRecado}
+        />
+
 
 
         <TextInput

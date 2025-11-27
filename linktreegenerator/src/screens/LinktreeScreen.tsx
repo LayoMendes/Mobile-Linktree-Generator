@@ -13,13 +13,14 @@ type RootStackParamList = {
     linkedin: string;
     github: string;
     portfolio: string;
+    recado: string;
   };
 };
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Linktree'>;
 
 export default function LinktreeScreen({ route, navigation }: Props) {
-  const { photo, whatsapp, linkedin, github, portfolio, nome } = route.params;
+  const { photo, whatsapp, linkedin, github, portfolio, nome, recado } = route.params;
 
   const openLink = (url: string) => Linking.openURL(url);
 
@@ -35,9 +36,14 @@ export default function LinktreeScreen({ route, navigation }: Props) {
         <View style={styles.card}>
           <View style={styles.imageShadow}>
             <Image source={{ uri: photo || 'https://via.placeholder.com/120' }} style={styles.profileImage} />
+
+         
+         
           </View>
 
           <Text style={styles.name}>{nome}</Text>
+          <Text style={styles.biografia}>{recado}</Text>
+          
 
           <TouchableOpacity style={styles.button} onPress={() => openLink(portfolio)}>
             <Text style={styles.buttonText}>Ver Portfólio</Text>
@@ -100,7 +106,13 @@ const styles = StyleSheet.create({
     left: 20,
     zIndex: 10,
   },
-
+  biografia: {
+    color: "white",
+    margin: 10,
+    padding: 10,
+    justifyContent: "center",
+    textAlign: "center",
+  },
   card: {
     width: '85%',
     backgroundColor: '#111',
@@ -127,8 +139,8 @@ const styles = StyleSheet.create({
     elevation: 18,
     marginBottom: 18,
   },
-  profileImage: { width: 120, height: 120, borderRadius: 60, borderWidth: 3, borderColor: '#6b8eff' },
-  name: { color: '#fff', fontSize: 24, fontWeight: 'bold', marginBottom: 8 },
+  profileImage: { width: 140, height: 140, borderRadius: 100, borderWidth: 3, borderColor: '#6b8eff' },
+  name: { color: '#fff', fontSize: 24, fontWeight: 'bold' },
   button: {
     backgroundColor: '#6b8eff',
     paddingVertical: 12,
