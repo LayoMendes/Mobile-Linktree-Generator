@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 type RootStackParamList = {
   Form: undefined;
   Linktree: {
+    nome: string;
     photo: string;
     whatsapp: string;
     linkedin: string;
@@ -27,10 +28,13 @@ export default function FormScreen() {
   const [linkedin, setLinkedin] = useState('');
   const [github, setGithub] = useState('');
   const [portfolio, setPortfolio] = useState('');
+  const [nome, setNome] = useState('');
+
 
   const handlePress = () => {
     // Navega para LinktreeScreen enviando os dados preenchidos
     navigation.navigate('Linktree', {
+      nome,
       photo,
       whatsapp,
       linkedin,
@@ -52,6 +56,16 @@ export default function FormScreen() {
         <Text style={styles.descricao}>
           Seja bem vindo ao Linktree Generator! Preencha os campos abaixo e clique em gerar para gerar seu portifolio!
         </Text>
+
+        
+        <TextInput
+          placeholder="Seu nome"
+          placeholderTextColor="#ccc"
+          style={styles.input}
+          value={nome}
+          onChangeText={setNome}
+        />
+
 
         <TextInput
           placeholder="Sua foto de perfil"

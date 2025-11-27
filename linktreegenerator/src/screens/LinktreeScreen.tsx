@@ -7,6 +7,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 type RootStackParamList = {
   Form: undefined;
   Linktree: {
+    nome: string;
     photo: string;
     whatsapp: string;
     linkedin: string;
@@ -18,7 +19,7 @@ type RootStackParamList = {
 type Props = NativeStackScreenProps<RootStackParamList, 'Linktree'>;
 
 export default function LinktreeScreen({ route, navigation }: Props) {
-  const { photo, whatsapp, linkedin, github, portfolio } = route.params;
+  const { photo, whatsapp, linkedin, github, portfolio, nome } = route.params;
 
   const openLink = (url: string) => Linking.openURL(url);
 
@@ -36,7 +37,7 @@ export default function LinktreeScreen({ route, navigation }: Props) {
             <Image source={{ uri: photo || 'https://via.placeholder.com/120' }} style={styles.profileImage} />
           </View>
 
-          <Text style={styles.name}>Seu Perfil</Text>
+          <Text style={styles.name}>{nome}</Text>
 
           <TouchableOpacity style={styles.button} onPress={() => openLink(portfolio)}>
             <Text style={styles.buttonText}>Ver Portfólio</Text>
